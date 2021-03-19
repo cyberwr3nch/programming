@@ -11,6 +11,10 @@
 - [If-else Statement](#ies)
 - [Python Operators](#pop)
 - [Dictionary Operations](#dop)
+- [User Interaction and While loop](#uwl)
+- [Functions](#fun)
+- [Class](#cls)
+- [File and Exceptions](#fae)
 
 ### Arithmetic Operations <a name='aop'></a>
 
@@ -69,6 +73,9 @@ print('-'.join(['F', 'B', 'I'])                   # joins the items in the list 
 
 print(len('github'))                              # prints the length of the string
 print("git" in "github")                          # returns boolean if the string is found
+
+a = "This is a line"
+print(a.split())                                  # splits the words on space; ['This', 'is', 'a', 'line'] 
 ```
 
 ### List Operations <a name="lop"></a>
@@ -219,3 +226,116 @@ for stud_name, stud_details in students.items():
         print(f"{stud_details['role']}")          # accessing the value's, Value
 ```
 
+### User Input and While loop <a name='uwl'></a>
+
+```python
+variable = input("Provide input: ")               # string input method with the message "Provide input: "
+variable = int(inpur("Enter num: "))              # integer input method with the messageg "Enter num: "
+
+while (condition):                                # while loop declaration
+        #code-suite
+        pass
+
+while True:                                       # infinite loop
+        #code-suite
+        pass
+
+while True:                                       # stop an infinite loop based on the conditions
+        if (condition):
+                #code-suite
+                break
+        else:
+                pass
+```
+
+### Functions <a name='fun'></a>
+
+```python
+def func_name():                                  # function declaration
+        #code-suite
+        pass
+func_name()                                       # calling a function, which triggers the code suite inside the function
+
+def func_name(arg1):                              # function declaration with an input to the function
+        #code-suite
+        print("Hello {arg1}")
+func_name("cyberwr3nch")                          # passing argument to the function with the function call
+
+def func_name(*args):                             # accepts any numbers of arguments being passed to the function
+        #code-suite
+        pass
+
+def func_name(first, last, **user_info):          # **user_info, accepts the key valued pair as an input
+        #code-suite
+        pass
+user_profile = func_name("Dhanesh","Sivasamy",  location="cbe", role="student")                   # Dhanesh being firstname, Sivasamy being second name, the keyed values locationa and role are accepted by the **user_info argument
+```
+
+### Classes <a name='cls'></a>
+
+```python
+class class_name:                                 # class initialization
+        #code-suite
+
+class class_name:       
+        def __init__(self):                       # constructor declaration, the __init__() always takes "self" as its first arguemnt
+                                                  # we can assign variables for the inistantiated classes
+                #code-suite
+                pass
+
+class class_name:
+        def __init__(self):                       # we can initialize values for the object with self.<varname>=value
+                self.name = "cyberwrn3ch"
+                self.role = "student"
+        
+        def out(self):
+                print(f"Hi {self.name}, I recon you are a {self.role}")
+
+eggs = class_name()                               # when calling the function without providing an argumet it automaticalls assigns the variables from the __init__()
+eggs.out()                                        # calling the function to output the result; class_obj.method(): OUTPUT: Hi cyberwrn3ch, I recon you are a student
+                                                  # when a variable/ value is mentioned in the __init__(self, value1), an variable is required when initializing an instance of the class
+                                                  # when another method in the class inherits the created object with "self" keyword, [HERE: The created object is passed to the out() inside the class], It passes the total no. of created / assigned values to the method, which makes us able to mention the values of self.name and self.role
+
+eggs.role="master"                                # The values assigned by the __init__() can be modified by addressing them
+eggs.out()
+
+class cls_child(class_name):                      # implementing inheritance, the cls_child becomes the child class of the class class_name. Meaning cls_child have all the methods in the class_name
+        def __init__(self):                       # super() calls the method specified in the parent class
+                super().__init__(name, role)         
+```
+
+### File And Exceptions <a name='fae'></a>
+
+```python
+
+with open('filename') as file_object:             # open a file and read its contents
+        file_object.read()
+
+with open('filename') as file_object:
+        file_object.readlines()                   # reads the file line by line
+
+with open('filename', 'w') as file_object:        # opening a file in write mode
+        file_object.write('cyberwr3nch')          # writing the desired stuff to the file
+        file_object.close()                       # closing the file
+```
+
+```python
+
+# EXCEPTIONS
+
+print(2/0)      # ZeroDivisionError: division by zero, program stops
+# handling the exceptions with try/except
+
+try:
+        print(2/0)
+except ZeroDivisionError:
+        print("You cannot divide by 0")
+
+with open("iammaster.txt")  #FileNotFoundError: [Errno 2] No such file or directory: 'iammaster.txt' 
+
+try:
+        with open(filename, encoding='utf-8') as f:
+        contents = f.read()
+except FileNotFoundError:
+        print(f"Sorry, the file {filename} does not exist.")
+```
